@@ -1,0 +1,205 @@
+body {
+    background: url("background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 30px;
+    color: black;
+}
+
+.item {
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.point {
+    padding-top: 5%;
+    color: black;
+    text-align: center;
+    
+}
+
+.coin {
+    width: 70vw;
+    height: 70vw;
+    background: url("coin.svg");
+    background-position: center;
+    background-size: contain;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+}
+
+.energy {
+    padding-bottom: 5%;
+    color: white;
+}
+
+.boosts_button {
+    position: absolute;
+    right: 10vw;
+    bottom: 15vw;
+    background-image: url(boosts.png);
+    width: 25vw;
+    height: 25vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.window {
+    display: none;
+    position: absolute;
+    width: 100vw;
+    height: 110vh;
+    left: 0;
+    top: 0;
+    background-image: url("boost-background.jpg");
+    background-size: cover;
+    z-index: 1;
+}
+
+.modal_boxes {
+    position: relative;
+    width: 80vw;
+    height: 110vh;
+    margin: 0 auto;
+    background: rgb(0, 0, 0, 0.95);
+    border-radius: 15%;
+
+}
+
+.modal_line {
+    position: absolute;
+    width: 60vw;
+    height: 60vh;
+    top: 10vh;
+    left: 10vw;
+}
+
+.boosts {
+    margin: 1vh auto;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+
+}
+
+.boosts > h2 {
+    text-align: center;
+}
+
+.boost {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+
+}
+
+.tap {
+    width: 10vw;
+    height: 10vw;
+    background-image: url("molod.png");
+    background-size: 10vw;
+    padding-right: 5px;
+    background-repeat: no-repeat;
+}
+
+.tapLvlBox {
+    color: white;
+    font-size: 6px;
+}
+
+.regen {
+    background-image: url("assets/lamp.png");
+    background-size: 10vw;
+    width: 10vw;
+    height: 10vw;
+    padding-right: 5px;
+    background-repeat: no-repeat;
+}
+
+.mass {
+    background-image: url("assets/energy.png");
+    background-size: 10vw;
+    width: 10vw;
+    height: 10vw;
+    padding-right: 5px;
+    background-repeat: no-repeat;
+}
+
+.btnBoosts {
+    width: 10vw;
+    height: 10vw;
+    background: rgb(115, 133, 149);
+    border-radius: 40%;
+    border: none;
+    transition: 0.5s;
+}
+
+.close {
+    position: absolute;
+    right: 5vw;
+    top: 10vh;
+    width: 50px;
+    height: 50px;
+    z-index: 9;
+}
+
+.line1 {
+    background: white;
+    width: 50px;
+    height: 3px;
+    transform: rotate(45deg);
+}
+
+.line2 {
+    background: white;
+    width: 50px;
+    height: 3px;
+    transform: rotate(-45deg);
+}
+
+.price {
+    color: yellow;
+    font-size: 15px;
+}
+
+
+.pointBoost {
+    text-align: center;
+    font-size: 32px;
+
+}
+
+
+.linkBox {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.linkk {
+    text-decoration: none;
+    font-size: 20px;
+    text-align: center;
+    color: rgb(115, 133, 149);
+    padding-top: 40px;
+}
+
+.clickApp , .RegenApp , MassEnergyApp {
+    transition: 0.5s;
+}
+
+
+
