@@ -104,7 +104,7 @@ coin.addEventListener("touchstart", () => {
     if (Number(currentEnergy) > 0) {
         point.innerHTML = Number(point.textContent) + clickPoints;
         pointSave = point.innerHTML
-        currentEnergy -= 100; // Отнимаем энергию при клике
+        currentEnergy -= 1; // Отнимаем энергию при клике
         energy.textContent = Number(currentEnergy);
         localStorage.setItem('pointSave', pointSave);
 
