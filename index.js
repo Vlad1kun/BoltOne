@@ -70,7 +70,10 @@ let regenSell = localStorage.getItem('regenSell') || 100;
 let massEnergySell = localStorage.getItem('massEnergySell') || 100;
 
 
-let currentEnergy = energyMax;
+// let currentEnergy = energyMax;
+let currentEnergy = localStorage.getItem('currentEnergy') || 500;
+energy.textContent = Number(currentEnergy);
+
 
 let clickApp = document.querySelector(".clickApp")
 let RegenApp = document.querySelector(".RegenApp")
@@ -80,23 +83,29 @@ slesh.textContent = '/' + energyMax
 
 // Функция для восстановления энергии
 function regenerateEnergy() {
+    currentEnergy = Number(currentEnergy);
     if (currentEnergy + energyRegen > energyMax) {
         currentEnergy = energyMax; // Устанавливаем максимальное значение
-    } else {
+        localStorage.setItem('currentEnergy', currentEnergy);
+        energy.textContent = currentEnergy;
+    } else if (currentEnergy + energyRegen < energyMax) {
         currentEnergy += energyRegen; // Восстанавливаем энергию
+        localStorage.setItem('currentEnergy', currentEnergy);
+        energy.textContent = Number(currentEnergy);
     }
-    energy.textContent = currentEnergy; // Обновляем отображение энергии
+    localStorage.setItem('currentEnergy', currentEnergy);
+    energy.textContent = Number(currentEnergy); // Обновляем отображение энергии
 }
 
 // Устанавливаем интервал для восстановления энергии
 setInterval(regenerateEnergy, 1000);
 
 coin.addEventListener("touchstart", () => {
-    if (currentEnergy > 0) {
+    if (Number(currentEnergy) > 0) {
         point.innerHTML = Number(point.textContent) + clickPoints;
         pointSave = point.innerHTML
-        currentEnergy -= 1; // Отнимаем энергию при клике
-        energy.textContent = currentEnergy;
+        currentEnergy -= 100; // Отнимаем энергию при клике
+        energy.textContent = Number(currentEnergy);
         localStorage.setItem('pointSave', pointSave);
 
         // Создаем элемент для анимации
