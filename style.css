@@ -48,8 +48,8 @@ body {
     right: 10vw;
     bottom: 15vw;
     background-image: url(boosts.png);
-    width: 25vw;
-    height: 25vw;
+    width: 20vw;
+    height: 20vw;
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -140,10 +140,10 @@ body {
 }
 
 .btnBoosts {
-    width: 10vw;
+    width: 15vw;
     height: 10vw;
     background: rgb(115, 133, 149);
-    border-radius: 40%;
+    border-radius: 10%;
     border: none;
     transition: 0.5s;
 }

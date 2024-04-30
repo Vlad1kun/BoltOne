@@ -101,10 +101,10 @@ function regenerateEnergy() {
 setInterval(regenerateEnergy, 1000);
 
 coin.addEventListener("touchstart", () => {
-    if (Number(currentEnergy) > 0) {
+    if (Number(currentEnergy) > 0 && Number(currentEnergy) - clickPoints > 0) {
         point.innerHTML = Number(point.textContent) + clickPoints;
         pointSave = point.innerHTML
-        currentEnergy -= 1; // Отнимаем энергию при клике
+        currentEnergy -= clickPoints; // Отнимаем энергию при клике
         energy.textContent = Number(currentEnergy);
         localStorage.setItem('pointSave', pointSave);
 
@@ -137,6 +137,40 @@ coin.addEventListener("touchstart", () => {
         }, 100);
     
         
+    } else if (Number(currentEnergy) - clickPoints < 0) {
+        point.innerHTML = Number(point.textContent) + Number(currentEnergy);
+        pointSave = point.innerHTML
+        currentEnergy -= Number(currentEnergy); // Отнимаем энергию при клике
+        energy.textContent = Number(currentEnergy);
+        localStorage.setItem('pointSave', pointSave);
+
+        // Создаем элемент для анимации
+        let scoreElement = document.createElement('div');
+        scoreElement.textContent = '+' + clickPoints;
+        scoreElement.style.position = 'absolute';
+        scoreElement.style.left = (event.target.getBoundingClientRect().left + event.target.offsetWidth / 2) + 'px';
+        scoreElement.style.top = (event.target.getBoundingClientRect().top + event.target.offsetHeight / 2) + 'px';
+        document.body.appendChild(scoreElement);
+
+        // Добавляем анимацию
+        scoreElement.animate([
+            { transform: 'translateY(0px)', opacity: 1 },
+            { transform: 'translateY(-50px)', opacity: 0 }
+        ], {
+            duration: 1000,
+            easing: 'ease-out'
+        });
+
+        // Удаляем элемент после анимации
+        setTimeout(() => {
+            document.body.removeChild(scoreElement);
+        }, 1000);
+
+        // Добавляем анимацию нажатия на монету
+        coin.style.transform = 'scale(0.9)';
+        setTimeout(() => {
+            coin.style.transform = 'scale(1)';
+        }, 100);
     }
 });
 
