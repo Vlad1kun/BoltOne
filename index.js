@@ -52,7 +52,7 @@ boosts_button.addEventListener("click", () => {
 // let regenSell = 1000;
 // let massEnergySell = 1000;
 
-// localStorage.clear()
+localStorage.clear()
 
 // local storage
 let pointSave = localStorage.getItem('pointSave') || 0;
