@@ -81,7 +81,38 @@ let MassEnergyApp = document.querySelector(".MassEnergyApp")
 
 slesh.textContent = '/' + energyMax
 
+//
+
+// Сохраняем текущее время при выходе из приложения
+window.addEventListener('unload', function() {
+    let exitTime = new Date().getTime();
+    localStorage.setItem('exitTime', exitTime);
+});
+
+// Восстанавливаем энергию при входе в приложение
+window.addEventListener('load', function() {
+    let enterTime = new Date().getTime();
+    let exitTime = localStorage.getItem('exitTime');
+    
+    if (exitTime) {
+        let timeDifference = enterTime - exitTime; // Время в миллисекундах
+        let energyToRegenerate = Math.floor(timeDifference / 1000) * energyRegen; // Предполагая, что энергия восстанавливается каждую секунду
+
+        currentEnergy = Number(currentEnergy) + energyToRegenerate;
+        if (currentEnergy > energyMax) {
+            currentEnergy = energyMax;
+        }
+
+        localStorage.setItem('currentEnergy', currentEnergy);
+        energy.textContent = Number(currentEnergy);
+    }
+});
+
+
+//
+
 // Функция для восстановления энергии
+
 function regenerateEnergy() {
     currentEnergy = Number(currentEnergy);
     if (currentEnergy + energyRegen > energyMax) {
@@ -112,8 +143,8 @@ coin.addEventListener("touchstart", () => {
         let scoreElement = document.createElement('div');
         scoreElement.textContent = '+' + clickPoints;
         scoreElement.style.position = 'absolute';
-        scoreElement.style.left = (event.target.getBoundingClientRect().left + event.target.offsetWidth / 2) + 'px';
-        scoreElement.style.top = (event.target.getBoundingClientRect().top + event.target.offsetHeight / 2) + 'px';
+        scoreElement.style.left = event.touches[0].clientX + 'px'; // Используем координаты касания
+        scoreElement.style.top = event.touches[0].clientY + 'px'; // Используем координаты касания
         document.body.appendChild(scoreElement);
 
         // Добавляем анимацию
@@ -148,8 +179,8 @@ coin.addEventListener("touchstart", () => {
         let scoreElement = document.createElement('div');
         scoreElement.textContent = '+' + clickPoints;
         scoreElement.style.position = 'absolute';
-        scoreElement.style.left = (event.target.getBoundingClientRect().left + event.target.offsetWidth / 2) + 'px';
-        scoreElement.style.top = (event.target.getBoundingClientRect().top + event.target.offsetHeight / 2) + 'px';
+        scoreElement.style.left = event.touches[0].clientX + 'px'; // Используем координаты касания
+        scoreElement.style.top = event.touches[0].clientY + 'px'; // Используем координаты касания
         document.body.appendChild(scoreElement);
 
         // Добавляем анимацию
@@ -167,7 +198,7 @@ coin.addEventListener("touchstart", () => {
         }, 1000);
 
         // Добавляем анимацию нажатия на монету
-        coin.style.transform = 'scale(0.9)';
+        coin.style.transform = 'scale(0.99)';
         setTimeout(() => {
             coin.style.transform = 'scale(1)';
         }, 100);
