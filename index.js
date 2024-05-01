@@ -131,7 +131,7 @@ coin.addEventListener("touchstart", () => {
         }, 1000);
 
         // Добавляем анимацию нажатия на монету
-        coin.style.transform = 'scale(0.9)';
+        coin.style.transform = 'scale(0.99)';
         setTimeout(() => {
             coin.style.transform = 'scale(1)';
         }, 100);
